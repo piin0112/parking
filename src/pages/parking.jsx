@@ -52,7 +52,7 @@ function Parking() {
   useEffect(() => {
     const fetchParkingData = async () => {
       try {
-        const response = await fetch("/parking.json");
+        const response = await fetch("/parking/parking.json");
         const parkingData = await response.json();
         const parsedData = parkingData.map((item) => ({
           ...item,
