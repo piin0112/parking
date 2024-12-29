@@ -1,4 +1,4 @@
-.park {
+.park{
   height: 100vh;
   width: 100vw;
   position: relative;
@@ -13,11 +13,34 @@
     align-items: flex-end;
   }
 }
+.map-container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0; /* 地圖位於最底層 */
+}
+
 
 @media screen and (min-width: 992px) {
-  .park__Position {
-    right: unset;
+  .park{
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+
+  &__Position {
+    all: unset;
+    position: fixed;
     bottom: 1.5rem;
     left: 7.5rem;
+    z-index: 100;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
   }
+  
+  
+}
 }

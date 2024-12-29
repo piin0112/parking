@@ -1,11 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useJsApiLoader, GoogleMap, Marker } from "@react-google-maps/api";
-import {
-  myPositionActions,
-  parkingActions,
-  filterActions,
-} from "../store/store";
+import { myPositionActions, parkingActions } from "../store/store";
 
 // 你自己的元件
 import SearchBar from "../components/SearchBar";
@@ -28,6 +24,10 @@ const libraries = ["places"];
 
 function Parking() {
   const dispatch = useDispatch();
+
+  // 新增一個 state 來存放使用者位置的座標
+  const [userLatLng, setUserLatLng] = useState(null);
+
   const [map, setMap] = useState(null);
   const [data, setData] = useState([]);
   const [center, setCenter] = useState({ lat: 22.9999, lng: 120.227 }); // 台南市中心
@@ -52,7 +52,9 @@ function Parking() {
   useEffect(() => {
     const fetchParkingData = async () => {
       try {
-        const response = await fetch("/parking/parking.json");
+        const response = await fetch(
+          "https://piin0112.github.io/parking/parking.json"
+        );
         const parkingData = await response.json();
         const parsedData = parkingData.map((item) => ({
           ...item,
@@ -73,9 +75,7 @@ function Parking() {
   useEffect(() => {
     if (!map) return;
     if (district) {
-      const found = centerLatLngOfDistrict.find(
-        (d) => d.district === district
-      );
+      const found = centerLatLngOfDistrict.find((d) => d.district === district);
       if (found) {
         map.panTo({ lat: found.lat, lng: found.lng });
       }
@@ -92,20 +92,22 @@ function Parking() {
     setCenter({ lat, lng });
   }, [map]);
 
-  // 定位使用者位置
+  // 定位使用者位置 (更新 userLatLng 並移動地圖)
   useEffect(() => {
     if (myPosition && map) {
       navigator.geolocation.getCurrentPosition(
         (pos) => {
-          const userLatLng = {
+          const currentLatLng = {
             lat: pos.coords.latitude,
             lng: pos.coords.longitude,
           };
-          map.panTo(userLatLng);
-          setCenter(userLatLng);
+          // 將座標存到 state，並將地圖中心移到該座標
+          setUserLatLng(currentLatLng);
+          map.panTo(currentLatLng);
+          setCenter(currentLatLng);
         },
         (err) => {
-          console.error(err);
+          console.error("取得使用者位置失敗", err);
         }
       );
       dispatch(myPositionActions.notMyPosition());
@@ -147,15 +149,31 @@ function Parking() {
         center={center}
         zoom={15}
         mapContainerStyle={{ width: "100%", height: "100%" }}
+        mapContainerClassName="map-container"
         options={{
           styles: mapStyles,
           streetViewControl: false,
           mapTypeControl: false,
           fullscreenControl: false,
+          gestureHandling: "greedy", // 允許直接用滑鼠滾輪縮放
         }}
+        
         onLoad={(mapInstance) => setMap(mapInstance)}
         onDragEnd={handleDragEnd}
       >
+        
+        {/* 使用者位置 Marker */}
+        {userLatLng && (
+          <Marker
+            position={userLatLng}
+            icon={{
+              url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png", // 預設藍色 Marker
+              scaledSize: new window.google.maps.Size(40, 40),
+            }}
+          />
+        )}
+
+        {/* 停車場 Marker */}
         {data.map((park) => {
           if (info?.id === park.id) {
             return (
