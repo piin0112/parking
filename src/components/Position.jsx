@@ -7,7 +7,7 @@ function Position() {
 
   // 不同情況dispatch不同type
   const myPositionHandler = () => {
-    dispatch(myPositionActions.myPosition())
+    dispatch(myPositionActions.myPosition()) // 透過 Redux 更新使用者位置
   }
   return (
     <button>
