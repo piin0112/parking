@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/parking/static/css/main.0f015994.css",
+    "main.js": "/parking/static/js/main.9a196693.js",
+    "static/media/undrawIsLoaded.svg": "/parking/static/media/undrawIsLoaded.0fbfdd1b856a1c76814d0a7db022d1ec.svg",
+    "static/media/undrawParking.svg": "/parking/static/media/undrawParking.0b1181e01b84529f848408de35aeda71.svg",
+    "static/media/undrawNotFound.svg": "/parking/static/media/undrawNotFound.26d2c466e47c7ca85c422aaf6360f0da.svg",
+    "static/media/SVGFilter.svg": "/parking/static/media/SVGFilter.f13dc8e1ef2d9257119d4c388b3105b8.svg",
+    "static/media/SVGSetting.svg": "/parking/static/media/SVGSetting.3123483f0aea5d130cc8cace0fc64c72.svg",
+    "static/media/SVGPayment.svg": "/parking/static/media/SVGPayment.9587436b86fe00785899836d0a3d5fe7.svg",
+    "static/media/SVGPosition.svg": "/parking/static/media/SVGPosition.2de69ef828db9812d50c295c4ae9ab0a.svg",
+    "static/media/SVGAccount.svg": "/parking/static/media/SVGAccount.e4c70252c47511e495a32e6f57d83136.svg",
+    "static/media/SVGLastStepInFilter.svg": "/parking/static/media/SVGLastStepInFilter.4a7660579b1e611a55143bee74d5fe5c.svg",
+    "static/media/SVGLastStep.svg": "/parking/static/media/SVGLastStep.614b5bd55dce1d82857ec036cc19c9de.svg",
+    "static/media/SVGParking.svg": "/parking/static/media/SVGParking.d0f98d5580101101e9d7fc53b581bb5d.svg",
+    "index.html": "/parking/index.html",
+    "static/media/SVGFind.svg": "/parking/static/media/SVGFind.0d7f32984e763cfd3017c812d4b8cfb0.svg",
+    "static/media/SVGNavigator.svg": "/parking/static/media/SVGNavigator.b7f0282744813084b3423022c0dcd913.svg",
+    "static/media/SVGClearText.svg": "/parking/static/media/SVGClearText.b0f6b8fc95e4dce12f752f5a3939ea25.svg",
+    "static/media/clickedMarkerZero.svg": "/parking/static/media/clickedMarkerZero.2d168292b8804c7af924a83a692d1efa.svg",
+    "static/media/marker.svg": "/parking/static/media/marker.50ac489effc6d13d72a3d9eb938118fb.svg",
+    "static/media/markerZero.svg": "/parking/static/media/markerZero.f14c8011dc612af9102cdc37851f2ddb.svg",
+    "main.0f015994.css.map": "/parking/static/css/main.0f015994.css.map",
+    "main.9a196693.js.map": "/parking/static/js/main.9a196693.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0f015994.css",
+    "static/js/main.9a196693.js"
+  ]
+}
